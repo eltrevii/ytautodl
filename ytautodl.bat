@@ -9,13 +9,14 @@ set LF=^
 cls
 
 :path
-echo Enter the path to download the files to without quotes. If you don't enter anything, the files will be downloaded to the current directory: "%cd%".
+echo Enter the path to download the files to without quotes. If you don't enter anything, the files will be downloaded to the current directory: "%cd%"
 set "_path=%cd%"
 set /p "_path=> "
 
 cls
 
 :input
+echo Enter the YouTube videos' URLs to download
 set "_url.new="
 set /p "_url.new=> "
 if not ["%_url.new%"]==[""] (
