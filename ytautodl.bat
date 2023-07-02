@@ -15,8 +15,8 @@ set /p "_path=> "
 
 cls
 
-:input
 echo Enter the YouTube videos' URLs to download
+:input
 set "_url.new="
 set /p "_url.new=> "
 if not ["%_url.new%"]==[""] (
@@ -28,7 +28,8 @@ cls
 
 set "_url=%_url: =!LF!%"
 for /F %%i in ("!_url!") do (  
-  yt-dlp -o '%_path%\%%^(title^)s.%%^(ext^)s' %%i
+  yt-dlp -x -o "%_path%\%%(title)s.%%(ext)s" %%i
+  cls
 )
 
 endlocal
