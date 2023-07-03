@@ -28,7 +28,7 @@ setlocal EnableDelayedExpansion
 set "_url=%_url: =!LF!%"
 for /F %%i in ("!_url!") do (
 	<nul set /p "=Downloading %%i..."
-  yt-dlp -q -x -o "%_path%\%%(title)s.%%(ext)s" %%i --add-metadata --no-playlist
+  yt-dlp -q -x -o "%_path%\%%(title)s.%%(ext)s" %%i --no-playlist
   echo. ok
 )
 endlocal
