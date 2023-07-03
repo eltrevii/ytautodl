@@ -1,9 +1,7 @@
 @echo off
 title YTAutoDL v1 ^| by eltrevi_
-setlocal EnableExtensions EnableDelayedExpansion
 
 set LF=^
-
 
 
 cls
@@ -26,11 +24,17 @@ if not ["%_url.new%"]==[""] (
 
 cls
 
+setlocal EnableDelayedExpansion
 set "_url=%_url: =!LF!%"
-for /F %%i in ("!_url!") do (  
-  yt-dlp -x -o "%_path%\%%(title)s.%%(ext)s" %%i
-  cls
+for /F %%i in ("!_url!") do (
+	<nul set /p "=Downloading %%i..."
+  yt-dlp -q -x -o "%_path%\%%(title)s.%%(ext)s" %%i --add-metadata
+  echo. ok
 )
-
 endlocal
+
+echo.
+<nul set /p "=Done! Press any key to exit or close this window."
+pause >nul
+
 exit /b
